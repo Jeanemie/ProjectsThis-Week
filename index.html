@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+
+  
+<html>
+<head>
+		<title>MY_APPLICATION</title>
+<style type="text/css">
+
+body{
+    background-image: linear-gradient(120deg, #E6C9E1, #AFD7F7, #F4E6BA );
+    font-family: Garamond, Bodoni MT;
+    color: grey;
+    min-height: 97.8vh;
+    font-size: 20px;
+    text-align: center;
+   
+}
+
+/* STYLYING INPUT ELEMENT AND TH EBUTTON */
+header,form{
+    display: flex;
+    min-height: 15vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: black;
+    
+}
+form input, form button{
+    padding: 0.4rem;
+    border: none;
+    font-size: 1.6rem;
+    background: white;
+}
+form button{
+    color: orange;
+    background: grey;
+    
+    transition: all 0.3s ease;
+}
+form button:hover{
+    background: orange;
+    color: grey;
+}
+/* STYLING DROPDOWN */
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+}
+.select{
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+    font-size: 20px;
+}
+select{
+    color: orange;
+    width: 8rem;
+    cursor: pointer;
+    padding: 0.7rem;
+}
+.select:after{
+    content: "\25bc";
+    position: absolute;
+    color: orange;
+    top: 7px;
+    right: 6px;
+    pointer-events: none;
+}
+.select:hover::after{
+   color: #583429;
+}
+
+/* STYLING CONTAINER WHERE THE TASKS ARE SHOWN */
+.task_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: Bodoni MT;
+}
+.task_list{
+    min-width: 40%;
+    list-style: none;
+    font-size: 20px;
+    font-family:Bodoni MT;
+
+}
+.task{
+    margin: 5px auto;
+    background: #FFCB35;
+    color: black;
+    display: flex;
+    font-size: 1.2rem;
+    padding: 0.3rem;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease;
+    
+}
+
+.task li {
+    flex: 1;
+    font-size: 20px;
+}
+
+/* STYLING THE BUTTONS ON THE TASKS  */
+.uncomplete_btn
+.complete_btn, 
+.delete_btn{
+    padding: 0.5rem;
+    background: grey;
+    color: orange;
+    border: none;
+    margin-left: 0.2rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.complete_btn{
+    background: grey;
+}
+.complete_btn:active{
+    background: orange;
+}
+
+.delete_btn:active{
+    background: grey;
+}
+
+.fa-trash,
+.fa-check{
+    pointer-events: none;
+}
+
+/* STYLING TASK THAT IS COMPLETED and uncompleted */
+.completedItem{
+    text-decoration: line-through;
+    opacity: 0.5;
+    transform: scale(0.96);
+    
+}.uncompletedItem{
+    text-decoration: line-through;
+    opacity: 0.5;
+    transform: scale(0.96);
+}
+/* DELETING THE TASKS */
+.fall{
+    transform: translateY(4rem) scale(0.4) rotateZ(20deg);
+    opacity: 0;
+}
+</style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="./styles.css">
+    <title>Task Application</title>
+</head>
+
+    <!-- TITLE -->
+    <header>
+        <h1>PROJECTS FOR THIS WEEK</h1>
+    </header>
+    <body>
+   
+      <div id="write_date">
+            <?php
+            $the_date = date(l, n/j/Y);
+            echo "$date";
+            ?>
+      </div>
+    <!-- INPUT FIELD TO ENTER TASK AND FILTER -->
+    
+    <input type="date" id="FromDate" name="FromDate" 
+       value="20/09/2022" class="date" />
+    <input type="date" id="ToDate" name="ToDate" 
+       value="27/09/2022" class="date"/>
+    
+
+    
+        <form>
+                <input type="text" placeholder="Enter your project" class="task_input" />
+        <button class="task_button" type="submit">
+            <i class="fas fa-plus-square"></i>
+        </button>            
+        <div class="select">
+            <select name="task" class="filter_task">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="uncompleted">Uncompleted</option>
+            </select>
+        </div>
+       
+      
+    </form>
+    
+ 
+    
+    <!-- CONTAINER FOR DISPLAYING TO-DO LIST BY ADDING TASKS DYNAMICALLY USING JAVASCRIPT -->
+    <div class="task_container">
+        <ul class="task_list"></ul>
+    </div>
+    <!-- ADDING JAVA SCRIPT -->
+    <script src="main_application.js"></script>
+</body>
+</html>
